@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git 'https://github.com/mouni4598/jenkins-terraform.git'
             }
         }
     
@@ -19,8 +19,7 @@ pipeline {
                 sh ('terraform plan') 
             }
         }
-
-        stage (" Action") {
+       stage (" Action") {
             steps {
                 echo "Terraform action is --> ${action}"
                 sh ('terraform ${action} --auto-approve') 
